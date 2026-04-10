@@ -6,7 +6,7 @@
 /*   By: mshershe <mshershe@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 17:45:24 by mshershe          #+#    #+#             */
-/*   Updated: 2026/04/01 19:36:30 by mshershe         ###   ########.fr       */
+/*   Updated: 2026/04/09 18:29:06 by mshershe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,13 @@ int main()
 		Bureaucrat D2(D1);
 		Bureaucrat C_copy = C;
 
+
+		std::cout << A ;
+		std::cout << B ;
+		std::cout << C ;
 		std::cout << D1 ;
+		std::cout << D2 ;
+		std::cout << C_copy ;
 		
 		D1.increment_grade();
 		std::cout << D1 ;
@@ -65,6 +71,7 @@ int main()
 	try
 	{
 		Bureaucrat B("B", 153);
+		std::cout << B;
 	}
 	catch (std::exception& e)
 	{
@@ -77,6 +84,7 @@ int main()
 	try
 	{
 		Bureaucrat B("B", -1);
+		std::cout << B ;
 	}
 	catch (std::exception& e)
 	{
@@ -88,6 +96,7 @@ int main()
 	try
 	{
 		Bureaucrat B("B", 151);
+		std::cout << B ;
 	}
 	catch (std::exception& e)
 	{
