@@ -22,16 +22,7 @@ class AForm
 		bool is_signed;
 		const int grade_to_sign;
 		const int grade_to_execute;
-		class GradeTooHighException : public std::exception
-		{
-			public:
-				const char* what() const throw();
-		};
-		class GradeTooLowException : public std::exception
-		{
-			public:
-				const char* what() const throw();
-		};
+		
 
 	public:
 		AForm();
@@ -42,8 +33,26 @@ class AForm
 		std::string getName() const;
 		int get_grade_to_sign() const;
 		int get_grade_to_execute()const;
-		int get_is_signed();
+
+
+		bool get_is_signed() const;
 		void beSigned(Bureaucrat Burea);
+		virtual void  execute(Bureaucrat const & executor) const = 0;
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				const char* what() const throw();
+		};
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				const char* what() const throw();
+		};
+		class AlreadyIsSigned : public std::exception
+		{
+			public:
+				const char* what() const throw();
+		};
 };
 
 std::ostream& operator<<(std::ostream& out, const AForm& form);

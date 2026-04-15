@@ -8,8 +8,8 @@ CPP = c++
 
 CPPFLAGS = -Wall -Wextra -Werror  -std=c++98
 
-NAME =  Forms
-SRC =  Bureaucrat.cpp main.cpp Form.cpp
+NAME =  A_Forms
+SRC =  Bureaucrat.cpp main.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 
 OBJECTDIR = object_files
 OBJ = $(addprefix $(OBJECTDIR)/, $(SRC:.cpp=.o))

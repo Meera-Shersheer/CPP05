@@ -71,6 +71,7 @@ int AForm::get_grade_to_execute() const
 	return (this->grade_to_execute);
 }
 
+
 void AForm::beSigned(Bureaucrat Burea)
 {
 	if (Burea.getGrade() > this->get_grade_to_sign())
@@ -81,7 +82,7 @@ void AForm::beSigned(Bureaucrat Burea)
 		std::cout<<Burea.getName()<<" couldn’t sign " << this->name <<" because this Aform is already signed." <<std::endl;
 }
 
-int AForm::get_is_signed()
+bool AForm::get_is_signed() const
 {
 	return (this->is_signed);
 }
@@ -90,4 +91,14 @@ std::ostream& operator<<(std::ostream& out, const AForm& form)
 {
 	out << form.getName() << ", Grade need to be signed: "<< form.get_grade_to_sign() <<", Grade need to be executed: " << form.get_grade_to_execute() <<std::endl;
 	return (out);
+}
+
+// void   AForm::execute(Bureaucrat const & executor) const
+// {
+
+// }
+
+const char* AForm::AlreadyIsSigned::what() const throw()
+{
+	return "The form is already signed" ;
 }
