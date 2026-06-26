@@ -6,7 +6,7 @@
 /*   By: mshershe <mshershe@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 21:15:58 by mshershe          #+#    #+#             */
-/*   Updated: 2026/04/15 16:06:05 by mshershe         ###   ########.fr       */
+/*   Updated: 2026/04/29 18:33:32 by mshershe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void   ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	if (this->get_is_signed())
-		throw  AForm::AlreadyIsSigned();
+	if (!(this->get_is_signed()))
+		throw  AForm::FormNotSigned();
 	if (executor.getGrade() > this->get_grade_to_execute())
 		throw AForm::GradeTooLowException();
 

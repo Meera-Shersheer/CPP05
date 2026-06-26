@@ -6,7 +6,7 @@
 /*   By: mshershe <mshershe@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 17:45:24 by mshershe          #+#    #+#             */
-/*   Updated: 2026/04/15 15:43:17 by mshershe         ###   ########.fr       */
+/*   Updated: 2026/06/27 00:20:58 by mshershe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 #include <cstdlib>
 #include <ctime>
 
+
+//ShrubberyCreationForm sign 145, exec 137
+//RobotomyRequestForm sign 72, exec 45
+//PresidentialPardonForm sign 25, exec 5
+//
 int main()
 {
 	srand(time(0));
@@ -55,7 +60,7 @@ int main()
 	try
 	{
 		Bureaucrat M("Meera", 1);
-		ShrubberyCreationForm f("home");
+		ShrubberyCreationForm f("home1");
 			
 		M.signForm(f);
 		M.executeForm(f);
@@ -67,21 +72,11 @@ int main()
 
 //////////////////////////////////////////////////////
 
-	try
-	{
-	
-	}
-	catch (std::exception& e)
-	{
-		std::cout<< e.what() << std::endl;
-	}
-
-///////////////////////////////////////////////////////
 
 	try
 	{
 		Bureaucrat b("Bob", 150);
-		ShrubberyCreationForm f("home");
+		ShrubberyCreationForm f("home2");
 			
 		b.signForm(f);
 		b.executeForm(f);
@@ -107,7 +102,7 @@ int main()
 
 	try
 	{
-		Bureaucrat M("Meera", 1);
+		Bureaucrat M("M", 1);
 		ShrubberyCreationForm f("H");
 			
 		M.signForm(f);
@@ -121,7 +116,7 @@ int main()
 
 	try
 	{
-		ShrubberyCreationForm f1("home");
+		ShrubberyCreationForm f1("home3");
 		ShrubberyCreationForm f2 = f1;
 		
 		std::cout << f1;
@@ -134,8 +129,8 @@ int main()
 
 	try
 	{
-		ShrubberyCreationForm f1("A");
-		ShrubberyCreationForm f2("B");
+		PresidentialPardonForm f1("A");
+		PresidentialPardonForm f2("B");
 			
 		f2 = f1;
 		
@@ -149,7 +144,7 @@ int main()
 
 	try
 	{
-		AForm* f = new ShrubberyCreationForm("home");
+		AForm* f = new RobotomyRequestForm("home4");
 			
 		Bureaucrat b("Alice", 1);
 		b.signForm(*f);
@@ -159,16 +154,6 @@ int main()
 	{
 		std::cout<< e.what() << std::endl;
 	}
-
-	// try
-	// {
-	// 	for (int i = 0; i < 100; i++)
-    // 	ShrubberyCreationForm f("test" + std::to_string(i));
-	// }
-	// catch (std::exception& e)
-	// {
-	// 	std::cout<< e.what() << std::endl;
-	// }
 	
 
 	try
@@ -176,13 +161,14 @@ int main()
 		Bureaucrat a("A", 1);
 		Bureaucrat b("B", 150);
 		
-		ShrubberyCreationForm f("home");
+		ShrubberyCreationForm f("home5");
 		
+		a.signForm(f);
 		a.signForm(f);
 		a.executeForm(f);
 		
-    	b.signForm(f);     // should fail
-    	b.executeForm(f);  // should fail
+		b.signForm(f);   
+		b.executeForm(f);  
 	}
 	catch (std::exception& e)
 	{

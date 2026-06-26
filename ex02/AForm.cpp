@@ -102,3 +102,7 @@ const char* AForm::AlreadyIsSigned::what() const throw()
 {
 	return "The form is already signed" ;
 }
+const char* AForm::FormNotSigned::what() const throw()
+{
+	return "The form is not signed yet" ;
+}

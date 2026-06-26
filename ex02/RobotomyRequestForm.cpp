@@ -6,7 +6,7 @@
 /*   By: mshershe <mshershe@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 21:16:23 by mshershe          #+#    #+#             */
-/*   Updated: 2026/04/15 15:57:38 by mshershe         ###   ########.fr       */
+/*   Updated: 2026/04/29 18:34:47 by mshershe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 
 void   RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
-	if (this->get_is_signed())
-		throw  AForm::AlreadyIsSigned();
+	if (!(this->get_is_signed()))
+		throw  AForm::FormNotSigned();
 	if (executor.getGrade() > this->get_grade_to_execute())
 		throw AForm::GradeTooLowException();
 	
