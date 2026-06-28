@@ -90,14 +90,11 @@ bool AForm::get_is_signed() const
 
 std::ostream& operator<<(std::ostream& out, const AForm& form)
 {
-	out << form.getName() << ", Grade need to be signed: "<< form.get_grade_to_sign() <<", Grade need to be executed: " << form.get_grade_to_execute() <<std::endl;
+	out << form.getName() << ", Grade need to be signed: "<< form.get_grade_to_sign() <<", Grade need to be executed: " << form.get_grade_to_execute()<<
+	", Status: "<< form.get_is_signed() <<std::endl;
 	return (out);
 }
 
-// void   AForm::execute(Bureaucrat const & executor) const
-// {
-
-// }
 
 const char* AForm::AlreadyIsSigned::what() const throw()
 {
