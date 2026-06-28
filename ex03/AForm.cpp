@@ -76,10 +76,11 @@ void AForm::beSigned(const Bureaucrat &burea)
 {
 	if (burea.getGrade() > this->get_grade_to_sign())
 		throw AForm::GradeTooLowException();
-	if (this->is_signed == false )
-		this->is_signed = true;
-	else
-		std::cout<<burea.getName()<<" couldn’t sign " << this->name <<" because this Aform is already signed." <<std::endl;
+
+	if (this->is_signed)
+		throw AlreadyIsSigned();
+
+	this->is_signed = true;
 }
 
 bool AForm::get_is_signed() const

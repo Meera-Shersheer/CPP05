@@ -6,7 +6,7 @@
 /*   By: mshershe <mshershe@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 17:45:24 by mshershe          #+#    #+#             */
-/*   Updated: 2026/06/28 03:20:56 by mshershe         ###   ########.fr       */
+/*   Updated: 2026/06/28 14:07:25 by mshershe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ int main()
 
 		AForm *f = Mike.makeForm("shrubbery creation", "home1");
 		Bureaucrat M("Meera", 1);
-			
+		
+	
 		M.signForm(*f);
 		M.executeForm(*f);
 		delete f;
@@ -123,7 +124,7 @@ int main()
 	{
 		Intern Mike;
 
-		AForm *f = Mike.makeForm("shrubbery creation", "");
+		AForm *f = Mike.makeForm("shrubbery creation", "N");
 		Bureaucrat M("M", 1);
 			
 		M.signForm(*f);
@@ -144,8 +145,8 @@ int main()
 		AForm *f1 = Mike.makeForm("presidential pardon", "home3");
 		PresidentialPardonForm *f2 = (PresidentialPardonForm *)f1;
 		
-		std::cout << f1;
-		std::cout << f2;
+		std::cout << *f1;
+		std::cout << *f2;
 		delete f1;
 	}
 	catch (std::exception& e)

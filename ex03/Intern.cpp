@@ -6,7 +6,7 @@
 /*   By: mshershe <mshershe@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/27 08:00:34 by mshershe          #+#    #+#             */
-/*   Updated: 2026/06/28 03:18:24 by mshershe         ###   ########.fr       */
+/*   Updated: 2026/06/28 13:58:23 by mshershe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ AForm* Intern::makeForm(std::string name, std::string target)
 		&Intern::createPresidentialPardon
 	};
 
-	for (long unsigned int j = 0; j < form_types->length();j++)
+	for (long unsigned int j = 0; j < 3;j++)
 	{
 		if (name == form_types[j])
 		{
