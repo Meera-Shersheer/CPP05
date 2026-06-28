@@ -6,7 +6,7 @@
 /*   By: mshershe <mshershe@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/27 08:00:20 by mshershe          #+#    #+#             */
-/*   Updated: 2026/06/28 02:23:22 by mshershe         ###   ########.fr       */
+/*   Updated: 2026/06/28 03:12:19 by mshershe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
+class AForm;
+
 class Intern
 {
 	private:
-		AForm *Intern::makeShrubbery(const std::string &target);
-		AForm *Intern::createRobotomy(const std::string &target);
-		AForm *Intern::createPresidentialPardon(const std::string &target);
+		AForm *makeShrubbery(const std::string &target);
+		AForm *createRobotomy(const std::string &target);
+		AForm *createPresidentialPardon(const std::string &target);
 	
 	public:
 		Intern();

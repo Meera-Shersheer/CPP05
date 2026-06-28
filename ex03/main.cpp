@@ -6,7 +6,7 @@
 /*   By: mshershe <mshershe@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 17:45:24 by mshershe          #+#    #+#             */
-/*   Updated: 2026/06/28 03:06:38 by mshershe         ###   ########.fr       */
+/*   Updated: 2026/06/28 03:08:46 by mshershe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,6 +186,33 @@ int main()
 		b.signForm(*f);   
 		b.executeForm(*f);
 		delete f ;
+	}
+	catch (std::exception& e)
+	{
+		std::cout<< e.what() << std::endl;
+	}
+
+
+
+	try
+	{
+		Intern Mike;
+
+		AForm *f = Mike.makeForm("shrubbery creation", "home6");
+
+	}
+	catch (std::exception& e)
+	{
+		std::cout<< e.what() << std::endl;
+	}
+
+	
+	try
+	{
+		Intern Mike;
+
+		AForm *f = Mike.makeForm("mmmmmmmmmmm", "home7");
+
 	}
 	catch (std::exception& e)
 	{
