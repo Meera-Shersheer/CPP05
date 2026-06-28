@@ -22,7 +22,7 @@ AForm::AForm(std::string _name, int _grade_to_sign, int _grade_to_execute):name(
 {
 	if ( _grade_to_sign > 150 ||  _grade_to_execute > 150 )
 		throw AForm::GradeTooLowException();
-	else if ( _grade_to_sign < 0 ||  _grade_to_execute < 0)
+	else if ( _grade_to_sign < 1 ||  _grade_to_execute < 1)
 		throw AForm::GradeTooHighException();
 	this->is_signed = false;	
 }
@@ -72,14 +72,14 @@ int AForm::get_grade_to_execute() const
 }
 
 
-void AForm::beSigned(Bureaucrat Burea)
+void AForm::beSigned(const Bureaucrat &burea)
 {
-	if (Burea.getGrade() > this->get_grade_to_sign())
+	if (burea.getGrade() > this->get_grade_to_sign())
 		throw AForm::GradeTooLowException();
 	if (this->is_signed == false )
 		this->is_signed = true;
 	else
-		std::cout<<Burea.getName()<<" couldn’t sign " << this->name <<" because this Aform is already signed." <<std::endl;
+		std::cout<<burea.getName()<<" couldn’t sign " << this->name <<" because this Aform is already signed." <<std::endl;
 }
 
 bool AForm::get_is_signed() const
