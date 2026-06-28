@@ -6,7 +6,7 @@
 /*   By: mshershe <mshershe@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/27 08:00:34 by mshershe          #+#    #+#             */
-/*   Updated: 2026/06/27 15:45:59 by mshershe         ###   ########.fr       */
+/*   Updated: 2026/06/28 02:36:57 by mshershe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,53 +33,46 @@ Intern::~Intern()
 	
 AForm* Intern::makeForm(std::string name, std::string target)
 {
-	int index = -1;
 	std::string form_types[] = {"shrubbery creation" ,"robotomy request", "presidential pardon"};
+	AForm* (Intern::*funcs[4])(const std::string& target) =
+	{
+		&Intern::makeShrubbery,
+		&Intern::createRobotomy,
+		&Intern::createPresidentialPardon
+	};
 
 	for (int j = 0; j < form_types->length();j++)
 	{
 		if (name == form_types[j])
-			index = j;
-	}
-	
-	if (index == -1)
-	{
-		std::cout << "The provided form name doesn't exist, check again."<<std::endl;
-		return (NULL);
-	}
-
-		
-	AForm* (Intern::*funcs[4])() =
-	{
-
-	};
-
-	
-	for(int i = 0; i < 4; i++)
-	{
-		if (mode[i] == level)
 		{
-			(this->*funcs[i])();
-			return ;
+				return ((this->*funcs[j])(target));
 		}
 	}
-	std::cout << "[ Probably complaining about insignificant problems ]"<<std::endl;
-	
+	throw Intern::UnrecognisedForm();
 
 }
-	
+
+
+const char*  Intern::UnrecognisedForm::what() const throw()
+{
+	return "The provided form name doesn't exist, check again.";
+}
+
 
 AForm *Intern::makeShrubbery(const std::string &target)
 {
+	std::cout << "The Intern created Shrubbery creation form for " << target<< std::endl;
     return new ShrubberyCreationForm(target);
 }
 
 AForm *Intern::createRobotomy(const std::string &target)
 {
+	std::cout << "The Intern created Robotomy request for " << target<< std::endl;
     return new RobotomyRequestForm(target);
 }
 
 AForm *Intern::createPresidentialPardon(const std::string &target)
 {
+	std::cout << "The Intern created presidential pardon form for " << target<< std::endl;
     return new PresidentialPardonForm(target);
 }

@@ -6,7 +6,7 @@
 /*   By: mshershe <mshershe@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 17:45:24 by mshershe          #+#    #+#             */
-/*   Updated: 2026/06/27 00:20:58 by mshershe         ###   ########.fr       */
+/*   Updated: 2026/06/28 03:06:38 by mshershe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "AForm.hpp"
+#include "Intern.hpp"
 #include <cstdlib>
 #include <ctime>
 
@@ -29,10 +30,14 @@ int main()
 		
 	try
 	{
+		Intern Mike;
+
+		AForm *f = Mike.makeForm("shrubbery creation", "home");
 		Bureaucrat b("Bob", 100);
-		ShrubberyCreationForm f("home");
 			
-		b.signForm(f);
+		b.signForm(*f);
+		
+		delete f;
 			
 	}
 	catch (std::exception& e)
@@ -44,10 +49,15 @@ int main()
 	
 	try
 	{
-		Bureaucrat S("Sara", 150);
-		ShrubberyCreationForm f("home");
+		Intern Sam;
+
+		ShrubberyCreationForm *f = (ShrubberyCreationForm *)Sam.makeForm("shrubbery creation", "home");
 		
-		S.signForm(f);
+		Bureaucrat S("Sara", 150);
+		
+		S.signForm(*f);
+
+		delete f;
 	}
 	catch (std::exception& e)
 	{
@@ -55,15 +65,18 @@ int main()
 	}
 
 //////////////////////////////////////////////////////
-
+//********************
 	
 	try
 	{
+		Intern Mike;
+
+		AForm *f = Mike.makeForm("shrubbery creation", "home1");
 		Bureaucrat M("Meera", 1);
-		ShrubberyCreationForm f("home1");
 			
-		M.signForm(f);
-		M.executeForm(f);
+		M.signForm(*f);
+		M.executeForm(*f);
+		delete f;
 	}
 	catch (std::exception& e)
 	{
@@ -75,11 +88,14 @@ int main()
 
 	try
 	{
+		Intern Mike;
+
+		AForm *f = Mike.makeForm("shrubbery creation", "home2");
 		Bureaucrat b("Bob", 150);
-		ShrubberyCreationForm f("home2");
 			
-		b.signForm(f);
-		b.executeForm(f);
+		b.signForm(*f);
+		b.executeForm(*f);
+		delete f;
 	}
 	catch (std::exception& e)
 	{
@@ -89,11 +105,14 @@ int main()
 
 	try
 	{
+		Intern Mike;
+
+		AForm *f = Mike.makeForm("shrubbery creation", "");
 		Bureaucrat M("Meera", 1);
-		ShrubberyCreationForm f("");
 			
-		M.signForm(f);
-		M.executeForm(f);
+		M.signForm(*f);
+		M.executeForm(*f);
+		delete f;
 	}
 	catch (std::exception& e)
 	{
@@ -102,12 +121,16 @@ int main()
 
 	try
 	{
+		Intern Mike;
+
+		AForm *f = Mike.makeForm("shrubbery creation", "");
 		Bureaucrat M("M", 1);
-		ShrubberyCreationForm f("H");
 			
-		M.signForm(f);
-		M.executeForm(f);
-		M.executeForm(f);
+		M.signForm(*f);
+		M.executeForm(*f);
+		M.executeForm(*f);
+		
+		delete f;
 	}
 	catch (std::exception& e)
 	{
@@ -116,39 +139,31 @@ int main()
 
 	try
 	{
-		ShrubberyCreationForm f1("home3");
-		ShrubberyCreationForm f2 = f1;
+		Intern Mike;
+
+		AForm *f1 = Mike.makeForm("presidential pardon", "home3");
+		PresidentialPardonForm *f2 = (PresidentialPardonForm *)f1;
 		
 		std::cout << f1;
 		std::cout << f2;
+		delete f1;
 	}
 	catch (std::exception& e)
 	{
 		std::cout<< e.what() << std::endl;
 	}
 
-	try
-	{
-		PresidentialPardonForm f1("A");
-		PresidentialPardonForm f2("B");
-			
-		f2 = f1;
-		
-		std::cout << f1;
-		std::cout << f2;
-	}
-	catch (std::exception& e)
-	{
-		std::cout<< e.what() << std::endl;
-	}
 
 	try
 	{
-		AForm* f = new RobotomyRequestForm("home4");
+		Intern Mike;
+
+		AForm *f = Mike.makeForm("robotomy request", "home4");
 			
 		Bureaucrat b("Alice", 1);
 		b.signForm(*f);
 		b.executeForm(*f);
+		delete f;
 	}
 	catch (std::exception& e)
 	{
@@ -158,17 +173,19 @@ int main()
 
 	try
 	{
+		Intern Mike;
+
+		AForm *f = Mike.makeForm("shrubbery creation", "home5");
 		Bureaucrat a("A", 1);
 		Bureaucrat b("B", 150);
+				
+		a.signForm(*f);
+		a.signForm(*f);
+		a.executeForm(*f);
 		
-		ShrubberyCreationForm f("home5");
-		
-		a.signForm(f);
-		a.signForm(f);
-		a.executeForm(f);
-		
-		b.signForm(f);   
-		b.executeForm(f);  
+		b.signForm(*f);   
+		b.executeForm(*f);
+		delete f ;
 	}
 	catch (std::exception& e)
 	{

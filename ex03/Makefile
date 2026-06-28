@@ -8,7 +8,7 @@ CPP = c++
 
 CPPFLAGS = -Wall -Wextra -Werror  -std=c++98
 
-NAME =  A_Forms
+NAME =  Interns
 SRC =  Bureaucrat.cpp main.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Intern.cpp 
 
 OBJECTDIR = object_files
