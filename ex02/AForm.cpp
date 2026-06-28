@@ -13,21 +13,21 @@
 #include "AForm.hpp"
 
 
-AForm::AForm():name("default"),grade_to_sign(150), grade_to_execute(150) 
+AForm::AForm():name("default"),grade_to_sign(150), grade_to_execute(150)
 {
 	this->is_signed = false;
 }
 
-AForm::AForm(std::string _name, int _grade_to_sign, int _grade_to_execute):name(_name),grade_to_sign(_grade_to_sign), grade_to_execute(_grade_to_execute) 
+AForm::AForm(std::string _name, int _grade_to_sign, int _grade_to_execute):name(_name),grade_to_sign(_grade_to_sign), grade_to_execute(_grade_to_execute)
 {
 	if ( _grade_to_sign > 150 ||  _grade_to_execute > 150 )
 		throw AForm::GradeTooLowException();
 	else if ( _grade_to_sign < 0 ||  _grade_to_execute < 0)
 		throw AForm::GradeTooHighException();
-	this->is_signed = false;	
+	this->is_signed = false;
 }
 
-AForm::AForm(const AForm& other):name(other.name),grade_to_sign(other.grade_to_sign), grade_to_execute(other.grade_to_execute) 
+AForm::AForm(const AForm& other):name(other.name),grade_to_sign(other.grade_to_sign), grade_to_execute(other.grade_to_execute)
 {
 	this->is_signed = other.is_signed;
 }
@@ -76,10 +76,11 @@ void AForm::beSigned(Bureaucrat Burea)
 {
 	if (Burea.getGrade() > this->get_grade_to_sign())
 		throw AForm::GradeTooLowException();
-	if (this->is_signed == false )
-		this->is_signed = true;
-	else
-		std::cout<<Burea.getName()<<" couldn’t sign " << this->name <<" because this Aform is already signed." <<std::endl;
+
+	if (this->is_signed)
+		throw AlreadyIsSigned();
+
+	this->is_signed = true;
 }
 
 bool AForm::get_is_signed() const
