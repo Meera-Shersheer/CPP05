@@ -6,7 +6,7 @@
 /*   By: mshershe <mshershe@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/27 08:00:34 by mshershe          #+#    #+#             */
-/*   Updated: 2026/06/28 02:36:57 by mshershe         ###   ########.fr       */
+/*   Updated: 2026/06/28 03:18:24 by mshershe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ Intern::Intern()
 	
 Intern::Intern(const Intern& other)
 {
-	
+	(void) other;
 }
 Intern& Intern::operator=(const Intern& other)
 {
+	(void) other;
 	return (*this);
 }
 
@@ -41,7 +42,7 @@ AForm* Intern::makeForm(std::string name, std::string target)
 		&Intern::createPresidentialPardon
 	};
 
-	for (int j = 0; j < form_types->length();j++)
+	for (long unsigned int j = 0; j < form_types->length();j++)
 	{
 		if (name == form_types[j])
 		{
