@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshershe <mshershe@student.42amman.com>    +#+  +:+       +#+        */
+/*   By: mshershe <mshershe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 18:35:00 by mshershe          #+#    #+#             */
-/*   Updated: 2026/04/09 20:59:58 by mshershe         ###   ########.fr       */
+/*   Updated: 2026/06/29 15:14:21 by mshershe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ class Form
 				const char* what() const throw();
 		};
 
+		class AlreadyIsSigned : public std::exception
+		{
+			public:
+				const char* what() const throw();
+		};
+
 	public:
 		Form();
 		Form(std::string _name, int _grade_to_sign, int _grade_to_execute);
@@ -42,7 +48,7 @@ class Form
 		std::string getName() const;
 		int get_grade_to_sign() const;
 		int get_grade_to_execute()const;
-		int get_is_signed();
+		bool get_is_signed() const;
 		void beSigned(Bureaucrat Burea);
 };
 

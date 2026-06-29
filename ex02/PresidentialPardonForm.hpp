@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshershe <mshershe@student.42amman.com>    +#+  +:+       +#+        */
+/*   By: mshershe <mshershe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 21:16:52 by mshershe          #+#    #+#             */
-/*   Updated: 2026/04/15 16:04:13 by mshershe         ###   ########.fr       */
+/*   Updated: 2026/06/29 15:50:43 by mshershe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #include "AForm.hpp"
 #include <iostream>
@@ -17,7 +19,7 @@ class PresidentialPardonForm : public AForm
 {
 	private:
 		std::string target;
-	
+
 	public:
 		PresidentialPardonForm();
 		PresidentialPardonForm(std::string _target);

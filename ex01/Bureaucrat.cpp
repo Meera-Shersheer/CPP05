@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshershe <mshershe@student.42amman.com>    +#+  +:+       +#+        */
+/*   By: mshershe <mshershe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 17:46:31 by mshershe          #+#    #+#             */
-/*   Updated: 2026/04/15 14:59:36 by mshershe         ###   ########.fr       */
+/*   Updated: 2026/06/28 18:42:54 by mshershe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade):name(name)
 {
 	if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
-	else if (grade < 0)
+	else if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else
 		this->grade = grade;
@@ -44,7 +44,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 Bureaucrat::~Bureaucrat()
 {
 }
-	
+
 
 std::string Bureaucrat::getName() const
 {
@@ -58,12 +58,12 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::increment_grade()
 {
-	if (grade <= 0)
+	if (grade <= 1)
 		throw Bureaucrat::GradeTooHighException();
 	else
 		grade--;
 }
-		
+
 void Bureaucrat::decrement_grade()
 {
 	if (grade >= 150)
@@ -94,7 +94,7 @@ void Bureaucrat::signForm(Form& form)
 	{
 		form.beSigned(*this);
 		std::cout << this->name << " signed " << form.getName() << std::endl;
-	
+
 	}
 	catch(std::exception& e)
 	{

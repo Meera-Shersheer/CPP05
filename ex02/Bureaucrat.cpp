@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshershe <mshershe@student.42amman.com>    +#+  +:+       +#+        */
+/*   By: mshershe <mshershe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 17:46:31 by mshershe          #+#    #+#             */
-/*   Updated: 2026/04/15 15:25:03 by mshershe         ###   ########.fr       */
+/*   Updated: 2026/06/29 15:42:04 by mshershe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
-#include <cstring>
-
-
 
 Bureaucrat::Bureaucrat():name("default"), grade(150)
 {
@@ -24,7 +20,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade):name(name)
 {
 	if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
-	else if (grade < 0)
+	else if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else
 		this->grade = grade;
@@ -47,7 +43,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 Bureaucrat::~Bureaucrat()
 {
 }
-	
+
 
 std::string Bureaucrat::getName() const
 {
@@ -61,12 +57,12 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::increment_grade()
 {
-	if (grade <= 0)
+	if (grade <= 1)
 		throw Bureaucrat::GradeTooHighException();
 	else
 		grade--;
 }
-		
+
 void Bureaucrat::decrement_grade()
 {
 	if (grade >= 150)
@@ -97,7 +93,7 @@ void Bureaucrat::signForm(AForm& form)
 	{
 		form.beSigned(*this);
 		std::cout << this->name << " signed " << form.getName() << std::endl;
-	
+
 	}
 	catch(std::exception& e)
 	{
@@ -109,7 +105,7 @@ void Bureaucrat::executeForm(AForm const & form) const
 {
 	try
 	{
-		if ( !strcmp(form.getName().c_str(), "ShrubberyCreationForm" )  
+		if ( !strcmp(form.getName().c_str(), "ShrubberyCreationForm" )
 		|| !strcmp(form.getName().c_str(), "PresidentialPardonForm" )
 		||  !strcmp(form.getName().c_str(), "RobotomyRequestForm" ) )
 		{
@@ -121,7 +117,7 @@ void Bureaucrat::executeForm(AForm const & form) const
 	{
 		std::cerr <<"Can't execute due to: "<< e.what() << '\n';
 	}
-	
 
-	
+
+
 }

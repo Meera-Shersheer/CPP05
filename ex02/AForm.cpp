@@ -22,7 +22,7 @@ AForm::AForm(std::string _name, int _grade_to_sign, int _grade_to_execute):name(
 {
 	if ( _grade_to_sign > 150 ||  _grade_to_execute > 150 )
 		throw AForm::GradeTooLowException();
-	else if ( _grade_to_sign < 0 ||  _grade_to_execute < 0)
+	else if ( _grade_to_sign < 1 ||  _grade_to_execute < 1)
 		throw AForm::GradeTooHighException();
 	this->is_signed = false;
 }
@@ -72,7 +72,7 @@ int AForm::get_grade_to_execute() const
 }
 
 
-void AForm::beSigned(Bureaucrat Burea)
+void AForm::beSigned(Bureaucrat &Burea)
 {
 	if (Burea.getGrade() > this->get_grade_to_sign())
 		throw AForm::GradeTooLowException();

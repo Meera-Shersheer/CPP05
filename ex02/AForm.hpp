@@ -22,21 +22,21 @@ class AForm
 		bool is_signed;
 		const int grade_to_sign;
 		const int grade_to_execute;
-		
+
 
 	public:
 		AForm();
 		AForm(std::string _name, int _grade_to_sign, int _grade_to_execute);
 		AForm(const AForm& other);
 		AForm& operator=(const AForm& other);
-		~AForm();
+		virtual ~AForm();
 		std::string getName() const;
 		int get_grade_to_sign() const;
 		int get_grade_to_execute()const;
 
 
 		bool get_is_signed() const;
-		void beSigned(Bureaucrat Burea);
+		void beSigned(Bureaucrat &Burea);
 		virtual void  execute(Bureaucrat const & executor) const = 0;
 		class GradeTooHighException : public std::exception
 		{

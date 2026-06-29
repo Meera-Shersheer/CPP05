@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshershe <mshershe@student.42amman.com>    +#+  +:+       +#+        */
+/*   By: mshershe <mshershe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 17:46:25 by mshershe          #+#    #+#             */
-/*   Updated: 2026/04/15 15:00:18 by mshershe         ###   ########.fr       */
+/*   Updated: 2026/06/29 15:40:09 by mshershe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include "AForm.hpp"
+#include <cstring>
 
 class AForm;
 
@@ -21,14 +23,14 @@ class Bureaucrat
 	private:
 		const std::string name;
 		int grade;
-		
+
 	public:
 		Bureaucrat();
 		Bureaucrat(std::string name, int grade);
 		Bureaucrat(const Bureaucrat& other);
 		Bureaucrat& operator=(const Bureaucrat& other);
 		~Bureaucrat();
-	
+
 		class GradeTooHighException : public std::exception
 		{
 			public:
@@ -39,13 +41,13 @@ class Bureaucrat
 			public:
 				const char* what() const throw();
 		};
-		
+
 		std::string getName() const;
 		int getGrade() const;
 
 		void increment_grade();
 		void decrement_grade();
-		
+
 		void signForm(AForm& form);
 		void executeForm(AForm const & form) const;
 };
